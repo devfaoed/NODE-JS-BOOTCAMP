@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DEAD CASE</title>
+    <style>
+        *{
+            font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";;
+        }
+       .header{
+        width: 100%;
+        max-width: 1500px;
+        margin: 20px auto;
+        height: 200px;
+        border: 3px solid steelblue;
+        text-align: center;
+        border-radius: 10px;
+        background-color: steelblue;
+        color: #fff;
+        font-size: 1.3rem;
+       }
+     .people{
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+     }
+     .people-list{
+        width: 500px;
+        overflow: hidden;
+     }
+    </style>
+</head>
+<body>
+    <section>
+        <div class="header">
+            <div class="header-content">
+                <h2>Welcome to the official website of OUR HOME</h2>
+                <p>This website contain the list of names people of a particular family</p>
+            </div>
+        </div>
+        <div class="people">
+            {%PRODUCT_CARDS%}
+        </div>
+    </section>
+</body>
+</html>

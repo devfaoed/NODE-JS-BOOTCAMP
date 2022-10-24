@@ -1,0 +1,186 @@
+[
+    {
+        "char_id": 1,
+        "name": "Aaron Enlightened",
+        "birthday": "09-07-1958",
+        "occupation": [
+            "High School Chemistry Teacher",
+            "Meth King Pin"
+        ],
+        "status": "Deceased",
+        "nickname": "Heisenberg",
+        "portrayed": "Bryan Cranston"
+    },
+    {
+        "char_id": 2,
+        "name": "Walter White Jr.",
+        "birthday": "07-08-1993",
+        "occupation": [
+            "Teenager"
+        ],
+        "status": "Alive",
+        "nickname": "Flynn",
+        "portrayed": "RJ Mitte"
+    }, 
+    {
+        "char_id": 3,
+        "name": "Adedokun Faith",
+        "birthday": "09-07-1958",
+        "occupation": [
+            "High School Chemistry Teacher",
+            "Meth King Pin"
+        ],
+        "status": "Alive",
+        "nickname": "Caramel",
+        "portrayed": "Bryan Cranston"
+    },
+
+    {
+        "char_id": 4,
+        "name": "Abbott Father",
+        "birthday": "09-07-1958",
+        "occupation": [
+            "High School Chemistry Teacher",
+            "Meth King Pin"
+        ],
+        "status": "Alive",
+        "nickname": "Candy",
+        "portrayed": "Bryan Cranston"
+    },
+
+    {
+        "char_id": 5,
+        "name": "Abel Breath",
+        "birthday": "09-07-1958",
+        "occupation": [
+            "High School Chemistry Teacher",
+            "Meth King Pin"
+        ],
+        "status": "Deceased",
+        "nickname": "Bugger",
+        "portrayed": "Bryan Cranston"
+    },
+    {
+        "char_id": 6,
+        "name": "Aaron Enlightened",
+        "birthday": "09-07-1958",
+        "occupation": [
+            "High School Chemistry Teacher",
+            "Meth King Pin"
+        ],
+        "status": "Deceased",
+        "nickname": "Heisenberg",
+        "portrayed": "Bryan Cranston"
+    },
+    {
+        "char_id": 7,
+        "name": "Walter White Jr.",
+        "birthday": "07-08-1993",
+        "occupation": [
+            "Teenager"
+        ],
+        "status": "Alive",
+        "nickname": "Flynn",
+        "portrayed": "RJ Mitte"
+    }, 
+    {
+        "char_id": 8,
+        "name": "Adedokun Faith",
+        "birthday": "09-07-1958",
+        "occupation": [
+            "High School Chemistry Teacher",
+            "Meth King Pin"
+        ],
+        "status": "Alive",
+        "nickname": "Caramel",
+        "portrayed": "Bryan Cranston"
+    },
+
+    {
+        "char_id": 9,
+        "name": "Abbott Father",
+        "birthday": "09-07-1958",
+        "occupation": [
+            "High School Chemistry Teacher",
+            "Meth King Pin"
+        ],
+        "status": "Alive",
+        "nickname": "Candy",
+        "portrayed": "Bryan Cranston"
+    },
+
+    {
+        "char_id": 10,
+        "name": "Abel Breath",
+        "birthday": "09-07-1958",
+        "occupation": [
+            "High School Chemistry Teacher",
+            "Meth King Pin"
+        ],
+        "status": "Deceased",
+        "nickname": "Bugger",
+        "portrayed": "Bryan Cranston"
+    },
+
+    {
+        "char_id": 11,
+        "name": "Aaron Enlightened",
+        "birthday": "09-07-1958",
+        "occupation": [
+            "High School Chemistry Teacher",
+            "Meth King Pin"
+        ],
+        "status": "Deceased",
+        "nickname": "Heisenberg",
+        "portrayed": "Bryan Cranston"
+    },
+    {
+        "char_id": 12,
+        "name": "Walter White Jr.",
+        "birthday": "07-08-1993",
+        "occupation": [
+            "Teenager"
+        ],
+        "status": "Alive",
+        "nickname": "Flynn",
+        "portrayed": "RJ Mitte"
+    }, 
+    {
+        "char_id": 13,
+        "name": "Adedokun Faith",
+        "birthday": "09-07-1958",
+        "occupation": [
+            "High School Chemistry Teacher",
+            "Meth King Pin"
+        ],
+        "status": "Alive",
+        "nickname": "Caramel",
+        "portrayed": "Bryan Cranston"
+    },
+
+    {
+        "char_id": 14,
+        "name": "Abbott Father",
+        "birthday": "09-07-1958",
+        "occupation": [
+            "High School Chemistry Teacher",
+            "Meth King Pin"
+        ],
+        "status": "Alive",
+        "nickname": "Candy",
+        "portrayed": "Bryan Cranston"
+    },
+
+    {
+        "char_id": 15,
+        "name": "Abel Breath",
+        "birthday": "09-07-1958",
+        "occupation": [
+            "High School Chemistry Teacher",
+            "Meth King Pin"
+        ],
+        "status": "Deceased",
+        "nickname": "Bugger",
+        "portrayed": "Bryan Cranston"
+    }
+]

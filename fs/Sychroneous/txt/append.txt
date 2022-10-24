@@ -1,47 +1,47 @@
  {
-        char_id: 3,
-        name: "Adedokun Faith",
-        birthday: "09-07-1958",
-        occupation: [
+        id: 3,
+        "name": "Adedokun Faith",
+        "birthday": "09-07-1958",
+        "occupation": [
             "High School Chemistry Teacher",
             "Meth King Pin"
         ],
         img: "https://images.pexels.com/photos/845457/pexels-photo-845457.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
-        status: "Deceased",
+        "status": "Deceased",
         appearance: [1, 2, 3, 4, 5],
-        nickname: "Caramel",
-        portrayed: "Bryan Cranston",
+        nick"name": "Caramel",
+        "portrayed": "Bryan Cranston",
         better_call_saul_appearance: [ ]
     },
 
     {
-        char_id: 4,
-        name: "Abbott Father",
-        birthday: "09-07-1958",
-        occupation: [
+        id: 4,
+        "name": "Abbott Father",
+        "birthday": "09-07-1958",
+        "occupation": [
             "High School Chemistry Teacher",
             "Meth King Pin"
         ],
         img: "https://images.pexels.com/photos/837358/pexels-photo-837358.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
-        status: "Deceased",
+        "status": "Deceased",
         appearance: [1, 2, 3, 4, 5],
-        nickname: "Candy",
-        portrayed: "Bryan Cranston",
+        nick"name": "Candy",
+        "portrayed": "Bryan Cranston",
         better_call_saul_appearance: [ ]
     },
 
     {
-        char_id: 5,
-        name: "Abel	Breath",
-        birthday: "09-07-1958",
-        occupation: [
+        id: 5,
+        "name": "Abel	Breath",
+        "birthday": "09-07-1958",
+        "occupation": [
             "High School Chemistry Teacher",
             "Meth King Pin"
         ],
         img: "https://images.pexels.com/photos/762080/pexels-photo-762080.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
-        status: "Deceased",
+        "status": "Deceased",
         appearance: [1, 2, 3, 4, 5],
-        nickname: "Bugger",
-        portrayed: "Bryan Cranston",
+        nick"name": "Bugger",
+        "portrayed": "Bryan Cranston",
         better_call_saul_appearance: [ ]
     },
