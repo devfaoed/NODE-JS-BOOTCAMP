@@ -1,8 +1,12 @@
 import express from 'express';
 const tourRounter = express.Router();
 
+// importing the user route which contain the middleware for protecting route
+import { protect, restrictTo} from '../controller/auth.js';
+
 // importing users controllers function
 import {
+
   getMonthlyPlan,
   getTourStats,
   topTours,
@@ -25,7 +29,13 @@ tourRounter.route('/tour-stats').get(getTourStats);
 // route to get montly -plan activities
 tourRounter.route('/montly-plan/:year').get(getMonthlyPlan);
 
-tourRounter.route('/').get(getAllTour).post(CreateTour);
-tourRounter.route('/:id').get(getTourById).patch(patchTour).delete(deleteTour);
+// protect to check if user is login and have access to the route in question
+// restrictTo means giving the user the right to perform a certain action
+tourRounter.route('/').get(protect, getAllTour).post(CreateTour);
+tourRounter
+  .route('/:id')
+  .get(getTourById)
+  .patch(patchTour)
+  .delete(protect, restrictTo("admin", "lead-guild"), deleteTour);
 
 export default tourRounter;

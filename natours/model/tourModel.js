@@ -72,7 +72,7 @@ const tourSchema = new mongoose.Schema(
     createdAt: {
       type: Date,
       default: Date.now(),
-      // to hide something we use select like the example below
+      // to hide something or data by not allowing it to be sent to the client we use select like the example below
       select: false,
     },
     startDates: [Date],
