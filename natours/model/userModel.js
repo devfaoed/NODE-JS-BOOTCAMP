@@ -43,6 +43,11 @@ const userSchema = new mongoose.Schema({
   passwordChangeAt: Date,
   passwordResetToken: String,
   passwordResetExpires: Date,
+  active:{
+    type: Boolean,
+    default: true,
+    select: false
+  },
   date: {
     type: Date,
     default: Date.now,
@@ -58,6 +63,18 @@ userSchema.pre('save', async function (next) {
   this.passwordConfirm = undefined;
   next();
 });
+
+userSchema.pre('save', async function (next) {
+  if (!this.isModified('password') || this.isNew) return next();
+  this.passwordChangeAt = Date.now() - 1000;
+  next();
+});
+
+// how to hide users who are not active
+userSchema.pre(/^find/, async function (next) {
+  this.find({active:{$ne:false}});
+  next()
+})
 
 // check if password match when login
 userSchema.methods.correctPassword = async function (
@@ -102,11 +119,7 @@ userSchema.methods.correctPassword = async function (
   return await bcrypt.compare(candidatePassword, userPassword);
 };
 
-userSchema.pre('save', async function (next) {
-  if (!this.isModified('password') || this.isNew) return next();
-  this.passwordChangeAt = Date.now() - 1000;
-  next();
-});
+
 
 const User = mongoose.model('User', userSchema);
 
