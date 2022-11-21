@@ -170,7 +170,11 @@ export const CreateTour = catchAsync(async (req, res, next) => {
 
 export const getTourById = catchAsync(async (req, res, next) => {
   const id = req.params.id;
-  const singleTour = await Tour.findById(id);
+  const singleTour = await Tour.findById(id).populate("reviews");
+  // .populate({
+  //   path: "guides",
+  //   select: "-__v -date"
+  // });
 
   // to check if tour we are finding with the sepcified id exist
   if (!singleTour) {

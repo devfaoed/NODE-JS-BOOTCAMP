@@ -1,5 +1,6 @@
 import mongoose from 'mongoose';
 import validator from 'validator';
+// import User from './userModel.js';
 const tourSchema = new mongoose.Schema(
   {
     name: {
@@ -76,6 +77,49 @@ const tourSchema = new mongoose.Schema(
       select: false,
     },
     startDates: [Date],
+    secretTour: {
+      type: Boolean,
+      default: false,
+    },
+    startLocation: {
+      // using GeoJSON
+      type: {
+        type: String,
+        default: 'Point',
+        enum: ['Point'],
+      },
+      coordinates: [Number],
+      address: String,
+      description: String,
+    },
+    locations: [
+      {
+        type: {
+          type: String,
+          default: 'Point',
+          enum: ['Point'],
+        },
+        coordinates: [Number],
+        address: String,
+        description: String,
+        day: Number,
+      },
+    ],
+    // for guides embedding
+    // guides: Array,
+    // for guildes referencing
+    guides: [
+      {
+        type: mongoose.Schema.ObjectId,
+        ref: 'User',
+      },
+    ],
+    reviews: [
+      {
+        type: mongoose.Schema.ObjectId,
+        ref: 'Review',
+      },
+    ],
   },
   {
     toJSON: { virtuals: true },
@@ -86,6 +130,42 @@ const tourSchema = new mongoose.Schema(
 // mongoose vitual model properties
 tourSchema.virtual('durationweeks').get(function () {
   return this.duration / 7;
+});
+
+// populating reviews throug virtua;
+tourSchema.virtual('review', {
+  ref: 'Review',
+  foreignField: 'tour',
+  localField: '_id',
+});
+
+// document middleware: run before .save() and .create()
+// how to implement embedding user model into tour model
+// here embedding all tour guilds from the user database
+// tourSchema.pre("save", async function(next){
+//   const tourGuides = this.guides.map(async id => await User.findById(id))
+//     this.guides = await Promise.all(tourGuides)
+//   next();
+// })
+
+// tourSchema.pre(/^find/, function (docs, next) {
+//   this.find({ secretTour: { $ne: true } });
+
+//   this.startDate = Date.now();
+//   next();
+// });
+
+// tourSchema.post(/^find/, function (docs, next) {
+//   console.log(`query took ${Date.now() - this.startDates} milliseconds`);
+//   next();
+// });
+
+tourSchema.pre(/^find/, function (next) {
+  this.populate({
+    path: 'guides',
+    select: '-__v -date',
+  });
+  next();
 });
 
 const Tour = mongoose.model('Tour', tourSchema);
