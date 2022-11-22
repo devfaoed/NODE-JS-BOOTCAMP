@@ -1,6 +1,8 @@
 import express from 'express';
 const userRouter = express.Router();
 
+// // reviews controller importation
+// import {getAllReview, createReview} from "../controller/review.js";
 // importing users controllers function
 import {
   getAllUsers,
@@ -12,7 +14,7 @@ import {
   deleteMe
 } from '../controller/users.js';
 // auth controller
-import {signup, login, protect, forgotPassword, resetPassword, updatePassword} from '../controller/auth.js';
+import {signup, login, protect,restrictTo, forgotPassword, resetPassword, updatePassword} from '../controller/auth.js';
 
 // signup route
 userRouter.post('/signup', signup);
@@ -34,10 +36,9 @@ userRouter.patch('/updateMe', protect, updateMe);
 // route for user to disactivate his or her account
 userRouter.delete('/deleteMe', protect, deleteMe);
 
-
-
-
 userRouter.route('/').get(getAllUsers).post(registerNewUser);
 userRouter.route('/:id').get(singleUser).patch(updateUser).delete(deleteUser);
+
+
 
 export default userRouter;

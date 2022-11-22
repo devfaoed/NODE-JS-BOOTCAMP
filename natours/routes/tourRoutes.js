@@ -4,6 +4,12 @@ const tourRounter = express.Router();
 // importing the user route which contain the middleware for protecting route
 import { protect, restrictTo} from '../controller/auth.js';
 
+// reviews controller importation
+// import {getAllReview, createReview} from "../controller/review.js";
+
+// importing review routes
+import reviewRoute from "./reviewRoutes.js";
+
 // importing users controllers function
 import {
 
@@ -19,6 +25,10 @@ import {
 
 // bringing events on id
 // tourRounter.param('id', checkId);
+
+// making use of the reviewRoute
+// this approach is called mouting a router
+tourRounter.use("/:id/reviews", reviewRoute);
 
 // route to get the first 5 cheap tours
 tourRounter.route('/top-5-cheap').get(topTours, getAllTour);
@@ -37,5 +47,8 @@ tourRounter
   .get(getTourById)
   .patch(patchTour)
   .delete(protect, restrictTo("admin", "lead-guild"), deleteTour);
+
+// route to use tourid to get reviews
+// tourRounter.route("/:tourid/reviews").post(protect, restrictTo("user"), createReview)
 
 export default tourRounter;
