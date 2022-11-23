@@ -4,12 +4,14 @@ import express from 'express';
 const reviewRoute = express.Router({mergeParams: true});
 
 // review controller importation
-import { getAllReview, createReview } from '../controller/review.js';
+import { getAllReview, createReview, deleteReview, updateReview, singleReview, setUserandTourId } from '../controller/review.js';
 
 // auth contoller importation
 import {protect, restrictTo} from "../controller/auth.js"
 
 // route to all review
-reviewRoute.route('/').get(getAllReview).post(protect, restrictTo("user"), createReview);
+reviewRoute.route('/').get(getAllReview).post(protect, restrictTo("user"), setUserandTourId, createReview);
+
+reviewRoute.route('/:id').get(singleReview).patch(updateReview).delete(deleteReview);
 
 export default reviewRoute;

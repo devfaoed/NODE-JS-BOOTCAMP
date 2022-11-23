@@ -6,21 +6,28 @@ const userRouter = express.Router();
 // importing users controllers function
 import {
   getAllUsers,
-  registerNewUser,
   singleUser,
   updateUser,
   deleteUser,
   updateMe,
-  deleteMe
+  deleteMe,
+  getMe,
 } from '../controller/users.js';
 // auth controller
-import {signup, login, protect,restrictTo, forgotPassword, resetPassword, updatePassword} from '../controller/auth.js';
+import {
+  signup,
+  login,
+  protect,
+  restrictTo,
+  forgotPassword,
+  resetPassword,
+  updatePassword,
+} from '../controller/auth.js';
 
 // signup route
 userRouter.post('/signup', signup);
 // login route
 userRouter.post('/login', login);
-
 
 // forgot password route
 userRouter.post('/forgotPassword', forgotPassword);
@@ -31,14 +38,15 @@ userRouter.patch('/resetPassword/:token', resetPassword);
 userRouter.patch('/updateMyPassword', protect, updatePassword);
 
 // route for user to update his or her data or profle
+userRouter.get('/me', protect, getMe, singleUser);
+
+// route for user to update his or her data or profle
 userRouter.patch('/updateMe', protect, updateMe);
 
 // route for user to disactivate his or her account
 userRouter.delete('/deleteMe', protect, deleteMe);
 
-userRouter.route('/').get(getAllUsers).post(registerNewUser);
+userRouter.route('/').get(getAllUsers);
 userRouter.route('/:id').get(singleUser).patch(updateUser).delete(deleteUser);
-
-
 
 export default userRouter;

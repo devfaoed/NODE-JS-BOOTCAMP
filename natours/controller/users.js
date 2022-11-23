@@ -9,6 +9,9 @@ import User from '../model/userModel.js';
 // import catchAsync function
 import { catchAsync } from '../utils/catchAsync.js';
 
+// importing handler factory data funtion
+import { deleteOne, updateOne, createOne, getOne, getAll } from './handlerFactory.js';
+
 // delcaring filterObj function
 const filterObj = (obj, ...allowedFields) => {
   const newObj = {};
@@ -19,21 +22,28 @@ const filterObj = (obj, ...allowedFields) => {
 };
 
 // get all users
-export const getAllUsers = catchAsync(async (req, res, next) => {
-  // try {
-  const allUser = await User.find();
-  res.status(200).json({
-    status: 'success',
-    number: allUser.length,
-    message: 'all users list',
-    data: {
-      allUser,
-    },
-  });
-  //   } catch (err) {
-  //     res.status(500).json(err.message);
-  //   }
-});
+export const getAllUsers = getAll(User)
+// export const getAllUsers = catchAsync(async (req, res, next) => {
+//   // try {
+//   const allUser = await User.find();
+//   res.status(200).json({
+//     status: 'success',
+//     number: allUser.length,
+//     message: 'all users list',
+//     data: {
+//       allUser,
+//     },
+//   });
+//   //   } catch (err) {
+//   //     res.status(500).json(err.message);
+//   //   }
+// });
+
+// route for current user to get his own datarofile
+export const getMe =  (req, res, next) => {
+  req.params.id = req.user.id;
+  next()
+}
 
 // route for current user to update his profile
 export const updateMe = catchAsync(async (req, res, next) => {
@@ -66,60 +76,22 @@ export const updateMe = catchAsync(async (req, res, next) => {
 
 // route for current user to disactivate his acout
 export const deleteMe = catchAsync(async (req, res, next) => {
-     // disactivate users acct
-  await User.findByIdAndUpdate(req.user.id, {active:false});
+  // disactivate users acct
+  await User.findByIdAndUpdate(req.user.id, { active: false });
   res.status(204).json({
     status: 'status',
-    data: null
+    data: null,
   });
 });
 
-
-
 //register a new user
-export const registerNewUser = async (req, res) => {
-  try {
-    res.status(200).json({
-      status: 'success',
-      message: 'no user registered yet!!',
-    });
-  } catch (err) {
-    res.status(500).json(err.message);
-  }
-};
+// export const registerNewUser = createOne(User)
 
 //a single user
-export const singleUser = async (req, res) => {
-  try {
-    res.status(200).json({
-      status: 'success',
-      message: 'no user registered yet!!',
-    });
-  } catch (err) {
-    res.status(500).json(err.message);
-  }
-};
+export const singleUser = getOne(User);
 
 // update user account
-export const updateUser = async (req, res) => {
-  try {
-    res.status(200).json({
-      status: 'success',
-      message: 'no user registered yet!!',
-    });
-  } catch (err) {
-    res.status(500).json(err.message);
-  }
-};
+export const updateUser = updateOne(User)
 
 // delete user
-export const deleteUser = async (req, res) => {
-  try {
-    res.status(200).json({
-      status: 'success',
-      message: 'no user registered yet!!',
-    });
-  } catch (err) {
-    res.status(500).json(err.message);
-  }
-};
+export const deleteUser = deleteOne(User);
