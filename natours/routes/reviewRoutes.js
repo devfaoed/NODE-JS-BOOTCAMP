@@ -9,9 +9,11 @@ import { getAllReview, createReview, deleteReview, updateReview, singleReview, s
 // auth contoller importation
 import {protect, restrictTo} from "../controller/auth.js"
 
-// route to all review
-reviewRoute.route('/').get(getAllReview).post(protect, restrictTo("user"), setUserandTourId, createReview);
+reviewRoute.use(protect);
 
-reviewRoute.route('/:id').get(singleReview).patch(updateReview).delete(deleteReview);
+// route to all review
+reviewRoute.route('/').get(getAllReview).post(restrictTo("user"), setUserandTourId, createReview);
+
+reviewRoute.route('/:id').get(singleReview).patch(restrictTo("user", "admin"), updateReview).delete(restrictTo("user", "admin"),deleteReview);
 
 export default reviewRoute;

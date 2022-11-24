@@ -31,21 +31,21 @@ import {
 tourRounter.use("/:id/reviews", reviewRoute);
 
 // route to get the first 5 cheap tours
-tourRounter.route('/top-5-cheap').get(topTours, getAllTour);
+tourRounter.route('/top-5-cheap').get(protect, topTours, getAllTour);
 
 // route to get the statistics perfrom on all tour e.g avgrating, avgprice, minprice, maxprice
-tourRounter.route('/tour-stats').get(getTourStats);
+tourRounter.route('/tour-stats').get(protect, getTourStats);
 
 // route to get montly -plan activities
-tourRounter.route('/montly-plan/:year').get(getMonthlyPlan);
+tourRounter.route('/montly-plan/:year').get(protect, restrictTo("admin", "lead-guild", "guild"), getMonthlyPlan);
 
 // protect to check if user is login and have access to the route in question
 // restrictTo means giving the user the right to perform a certain action
-tourRounter.route('/').get(protect, getAllTour).post(CreateTour);
+tourRounter.route('/').get(getAllTour).post(protect, restrictTo("admin", "lead-guild"), CreateTour);
 tourRounter
   .route('/:id')
   .get(getTourById)
-  .patch(patchTour)
+  .patch(protect, restrictTo("admin", "lead-guild"), patchTour)
   .delete(protect, restrictTo("admin", "lead-guild"), deleteTour);
 
 // route to use tourid to get reviews

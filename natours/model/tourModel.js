@@ -114,7 +114,6 @@ const tourSchema = new mongoose.Schema(
         ref: 'User',
       },
     ],
-   
   },
   {
     toJSON: { virtuals: true },
@@ -122,11 +121,17 @@ const tourSchema = new mongoose.Schema(
   }
 );
 
+// setting index on database schema field am using price her as an example
+tourSchema.index({ price: 1, ratingsAverage: -1 });
+
+// using slug for indexing
+tourSchema.index({ slug: 1 });
+
 // mongoose vitual model properties
 tourSchema.virtual('durationweeks').get(function () {
   return this.duration / 7;
 });
-
+ 
 // populating reviews throug virtual population;
 tourSchema.virtual('reviews', {
   ref: 'Review',

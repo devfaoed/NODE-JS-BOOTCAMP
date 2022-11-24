@@ -53,7 +53,8 @@ app.use(
 const __filename = fileURLToPath(import.meta.url);
 let __dirname = path.dirname(__filename);
 // serving static file to express
-app.use(express.static(`${__dirname}/public`));
+// app.use(express.static(`${__dirname}/public`));
+app.use(express.static(path.join(__dirname, "public")));
 
 // test middleware
 app.use((req, res, next) => {
@@ -61,11 +62,26 @@ app.use((req, res, next) => {
   next();
 });
 
-// index route
-app.get('/', (req, res) => {
-  res.status(200).redirect('/api/v1/tours');
-});
+// setting up pug template engine
+app.set("view engine", "pug");
+app.set("views", path.join(__dirname, "views"));
 
+
+// // index route
+// app.get('/', (req, res) => {
+//   res.status(200).render('base', {
+//     tour: "The Forest hicker",
+//     user: "Broda Faith"
+// });
+// });
+
+// app.get("/overview", (req, res) => {
+//   res.status(200).render("overview", {title: "all tours"})
+// })
+
+// app.get("/tour", (req, res) => {
+//   res.status(200).render("tour", {title: "the forest hicker tour"})
+// })
 // app.get('/api/v1/tours', getAllTour);
 
 // getting tour by id
@@ -79,6 +95,11 @@ app.get('/', (req, res) => {
 
 //deleting a tour
 // app.delete('/api/v1/tours/:id', deleteTour);
+
+// simplifying our view route
+// importing tourRoute from Route folder
+import viewRoute from './routes/viewRoute.js';
+app.use('/', viewRoute);
 
 // simplifying our Tour route
 // importing tourRoute from Route folder
