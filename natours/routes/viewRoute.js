@@ -5,8 +5,8 @@ const viewRoute = express.Router();
 // view contoller importation
 import { getOverview, getTour } from '../controller/viewsController.js';
 
-viewRoute.get('/overview', getOverview);
+viewRoute.get('/', getOverview);
 
-viewRoute.get('/tour', getTour);
+viewRoute.get('/tour/:name', getTour);
 
 export default viewRoute;
